@@ -1,3 +1,101 @@
+/* Authentication Styles */
+.auth-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--deep-blue), var(--midnight-blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.auth-container {
+    background-color: rgba(19, 47, 76, 0.9);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    padding: 40px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.auth-logo {
+    margin-bottom: 20px;
+}
+
+.auth-logo .logo {
+    max-width: 150px;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+}
+
+.auth-container h2 {
+    color: var(--gold);
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+.auth-error {
+    color: #e74c3c;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    min-height: 20px;
+}
+
+.auth-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--soft-white);
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    background-color: rgba(10, 26, 47, 0.7);
+    border-radius: 4px;
+    color: var(--soft-white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+.auth-button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--gold);
+    color: var(--midnight-blue);
+    border: none;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-button:hover {
+    background-color: #c19b2e;
+    transform: translateY(-2px);
+}
+
 /* Base Styles */
 :root {
     --midnight-blue: #0a1a2f;
