@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize authentication
     initAuth();
+    
+    // Initialize video controls
+    initVideoControls();
 });
 
 // Authentication functions
@@ -63,6 +66,39 @@ function showPresentation() {
     document.getElementById('auth-overlay').style.display = 'none';
     // Show presentation content
     document.getElementById('presentation-content').style.display = 'block';
+}
+
+// Video controls
+function initVideoControls() {
+    const videoOverlay = document.querySelector('.video-overlay');
+    const terraceVideo = document.querySelector('.terrace-video');
+    
+    if (videoOverlay && terraceVideo) {
+        videoOverlay.addEventListener('click', function() {
+            if (terraceVideo.paused) {
+                terraceVideo.play();
+                videoOverlay.style.opacity = '0';
+            } else {
+                terraceVideo.pause();
+                videoOverlay.style.opacity = '1';
+            }
+        });
+        
+        // Show overlay when video ends
+        terraceVideo.addEventListener('ended', function() {
+            videoOverlay.style.opacity = '1';
+        });
+        
+        // Show overlay when video is paused
+        terraceVideo.addEventListener('pause', function() {
+            videoOverlay.style.opacity = '1';
+        });
+        
+        // Hide overlay when video is playing
+        terraceVideo.addEventListener('play', function() {
+            videoOverlay.style.opacity = '0';
+        });
+    }
 }
 
 // Navigation functions
