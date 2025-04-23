@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Cielo D.C. - Occupancy Analysis & Recommendations</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+        h1, h2, h3 { color: #333; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        h1 { text-align: center; }
+        .section { margin-bottom: 20px; }
+        .subsection { margin-left: 20px; }
+        ul, ol { margin-left: 20px; }
+        .table-container { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .highlight { font-weight: bold; }
+        .image-container { text-align: center; margin: 20px 0; }
+        img { max-width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .recommendation { border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; border-radius: 5px; }
+        .kpi-table { width: 100%; border-collapse: collapse; margin-top: 10px; margin-bottom: 20px;}
+        .kpi-table th, .kpi-table td { border: 1px solid #ddd; padding: 6px; text-align: center; }
+        .kpi-table th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+
+    <h1>El Cielo D.C. - Occupancy Analysis and Recommendations</h1>
+    <p style="text-align:center;"><em>An Executive Report for the Co-Founders</em></p>
+
+    <div class="section">
+        <h2>Executive Summary</h2>
+        <p>This report analyzes the Washington D.C. fine dining market to understand factors impacting El Cielo D.C.'s occupancy rates. El Cielo, a Michelin-starred Colombian tasting menu restaurant, faces competition in a vibrant but competitive market, which includes top restaurants like Minibar, Jônt, The Dabney and Rose's Luxury. The analysis suggests opportunities for improving occupancy through a variety of data-driven initiatives.</p>
+        <ul>
+            <li><strong>Competitive Landscape:</strong> D.C.'s fine dining scene is robust, with established competitors showcasing unique concepts and a range of pricing.</li>
+            <li><strong>D.C. Diner Behavior:</strong> Diners in D.C. value special occasion dining, weekend experiences, value for money and strong social media presence.</li>
+            <li><strong>El Cielo D.C. Perception:</strong> While praised for its unique concept and immersion, El Cielo faces concerns regarding perceived value, service execution and the length of the dining experience.</li>
+            <li><strong>Key Recommendations:</strong>
+                <ul>
+                    <li>Enhance Booking Accessibility and Visibility</li>
+                    <li>Introduce a Tiered Dining Option to Improve Value Perception</li>
+                    <li>Aggressively Market Social and Local Promotions</li>
+                    <li>Refine the Dining Experience Based on Feedback (Pacing & Portions)</li>
+                    <li>Strengthen Loyalty and Personal Outreach</li>
+                </ul>
+            </li>
+            <li><strong>Target KPI:</strong> Increase Occupancy Rate to 85%+ overall, and 90-100% on weekends.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>1. Competitive Landscape & Market Performance</h2>
+        <p>D.C.'s fine dining market is dynamic and competitive. Success demands a clear concept and consistent execution.</p>
+
+        <div class="subsection">
+            <h3>A. Key Competitors Overview</h3>
+            <p>This provides an overview of the top competitor restaurants, each with their concept, price point, target, and key digital presence, strengths and weaknesses:</p>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Restaurant</th>
+                    <th>Concept</th>
+                    <th>Price (Tasting Menu)</th>
+                    <th>Primary Reservation Platform</th>
+                    <th>Key Differentiator(s)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Minibar by José Andrés</td>
+                    <td>Avant-garde, molecular gastronomy</td>
+                    <td>~$350</td>
+                    <td>Tock</td>
+                    <td>Innovative, theatrical experience</td>
+                  </tr>
+                  <tr>
+                    <td>Jônt</td>
+                    <td>Progressive, Japanese-influenced</td>
+                    <td>~$375</td>
+                    <td>OpenTable</td>
+                    <td>Intimate counter, global ingredients</td>
+                  </tr>
+                  <tr>
+                    <td>Pineapple & Pearls</td>
+                    <td>Playful, fine dining "party"</td>
+                    <td>~$345</td>
+                    <td>Resy</td>
+                    <td>Fun/approachable fine dining</td>
+                  </tr>
+                  <tr>
+                    <td>The Dabney</td>
+                    <td>Mid-Atlantic, hearth cooking</td>
+                    <td>~$235</td>
+                    <td>OpenTable</td>
+                    <td>Local sourcing, rustic ambiance</td>
+                  </tr>
+                  <tr>
+                      <td>Imperfecto</td>
+                      <td>Latin-Mediterranean fusion</td>
+                      <td>~$265</td>
+                      <td>OpenTable / Tock</td>
+                      <td>Modern presentation, Tasting experience</td>
+                  </tr>
+                  <tr>
+                    <td>Bresca</td>
+                    <td>Contemporary French Bistro</td>
+                    <td>~$158</td>
+                    <td>OpenTable / Resy</td>
+                    <td>Creative plating, seasonal focus</td>
+                  </tr>
+                  <tr>
+                    <td>Rose's Luxury</td>
+                    <td>Eclectic American, Small Plates</td>
+                    <td>$118+</td>
+                    <td>Resy</td>
+                    <td>High energy, Shareable format, Strong value perception</td>
+                  </tr>
+                  <tr>
+                    <td>Cranes</td>
+                    <td>Spanish-Japanese Fusion</td>
+                    <td>~$128-$150</td>
+                    <td>Resy / OpenTable</td>
+                    <td>Unique fusion concept</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h3>B. Comparative Performance Metrics (Proxies)</h3>
+            <p>Data and market information are combined to generate these key performance metrics:</p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Description</th>
+                            <th>Observations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pricing</td>
+                            <td>Average spend for tasting menus</td>
+                            <td>El Cielo D.C. is at the higher end of 1-star restaurants.</td>
+                        </tr>
+                        <tr>
+                            <td>Reservation Availability</td>
+                            <td>Ease of booking and lead times</td>
+                            <td>High-demand restaurants (Jônt, Minibar) show very limited availability, as is expected.</td>
+                        </tr>
+                        <tr>
+                            <td>Online Ratings & Review Volume</td>
+                            <td>Online reviews (Yelp, etc.) and quantities</td>
+                            <td>Competitors typically have strong ratings and high review volumes.  El Cielo currently shows 4.1 stars on Yelp (147 reviews).</td>
+                        </tr>
+                        <tr>
+                            <td>Social Media Presence</td>
+                            <td>Follower counts and engagement on key platforms</td>
+                            <td>Some competitors (The Dabney, Rose's Luxury) have very large followings on Instagram.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="subsection">
+          <h3>C. Competitive Positioning Matrix</h3>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Restaurant</th>
+                    <th>Michelin Stars</th>
+                    <th>Concept Focus</th>
+                    <th>Avg. Tasting Menu Price</th>
+                    <th>Primary Reservation Platform</th>
+                    <th>Key USP(s)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>El Cielo D.C.</td>
+                    <td>1</td>
+                    <td>Colombian, Experiential</td>
+                    <td>$289</td>
+                    <td>SevenRooms</td>
+                    <td>Sensory Experiences, Colombian Focus</td>
+                  </tr>
+                  <tr>
+                    <td>Jônt</td>
+                    <td>2</td>
+                    <td>Progressive, Japanese Influenced</td>
+                    <td>$375</td>
+                    <td>OpenTable</td>
+                    <td>Intimate Chef's counter, ingredient-driven tasting</td>
+                  </tr>
+                  <tr>
+                    <td>Minibar</td>
+                    <td>2</td>
+                    <td>Avant-garde, Molecular</td>
+                    <td>$350</td>
+                    <td>Tock</td>
+                    <td>Theatrical presentation, Brand Power</td>
+                  </tr>
+                  <tr>
+                    <td>Pineapple & Pearls</td>
+                    <td>1 (prev. 2)</td>
+                    <td>"Party" Style Fine Dining</td>
+                    <td>$345</td>
+                    <td>Resy</td>
+                    <td>Playful atmosphere, all-inclusive experience</td>
+                  </tr>
+                  <tr>
+                    <td>The Dabney</td>
+                    <td>1</td>
+                    <td>Mid-Atlantic, Hearth Cooking</td>
+                    <td>$235</td>
+                    <td>OpenTable</td>
+                    <td>Hyper-local sourcing, hearth cooking</td>
+                  </tr>
+                  <tr>
+                    <td>Imperfecto</td>
+                    <td>1</td>
+                    <td>Latin-Mediterranean Fusion</td>
+                    <td>$265</td>
+                    <td>Tock/OpenTable</td>
+                    <td>Latin, modern tasting</td>
+                  </tr>
+                   <tr>
+                    <td>Bresca</td>
+                    <td>1</td>
+                    <td>French Bistro</td>
+                    <td>~$158+</td>
+                    <td>OpenTable/Resy</td>
+                    <td>Creative plating, seasonal focus, sister to Jônt</td>
+                  </tr>
+                  <tr>
+                    <td>Rose's Luxury</td>
+                    <td>Bib Gourmand</td>
+                    <td>Eclectic American, Small Plates</td>
+                    <td>$118+</td>
+                    <td>Resy</td>
+                    <td>High energy, Shareable format, Strong value perception</td>
+                  </tr>
+                  <tr>
+                    <td>Cranes</td>
+                    <td>0 (prev. 1)</td>
+                    <td>Spanish/Japanese Fusion</td>
+                    <td>~$128+</td>
+                    <td>Resy/OpenTable</td>
+                    <td>Innovative fusion, value pricing</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h3>D. Unique Selling Propositions (USPs) in the D.C. Market</h3>
+            <ul>
+                <li><span class="highlight">Hyper-Local/Regional Focus</span> (e.g., The Dabney)</li>
+                <li><span class="highlight">Unique Fusion Concepts</span> (e.g., Cranes, Imperfecto)</li>
+                <li><span class="highlight">Chef-Driven Experience & Reputation</span> (e.g., Minibar, Jônt)</li>
+                <li><span class="highlight">Experiential/Theatrical Dining</span> (e.g., Minibar, Pineapple & Pearls, El Cielo)</li>
+                <li><span class="highlight">Strong Value Proposition</span> (e.g., Rose's Luxury)</li>
+                <li><span class="highlight">Ambiance and Service</span> (various)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>2. D.C. Diner Behavior & Preferences</h2>
+        <p>Understanding D.C. diner habits is essential.</p>
+
+        <div class="subsection">
+            <h3>A. Dining Habits & Preferences</h3>
+            <ul>
+                <li><span class="highlight">Occasion:</span> Fine dining for special occasions, leisure, and high-level business.</li>
+                <li><span class="highlight">Frequency & Loyalty:</span> Consumers seeking on-premises dining. Loyalty programs are influential.</li>
+                <li><span class="highlight">Menu Preferences:</span> Tasting menus are popular but with à la carte options also desired. Experiential elements and chef's specials are key.</li>
+                <li><span class="highlight">Booking Patterns:</span> Advance planning is common for popular restaurants.</li>
+            </ul>
+        </div>
+
+        <div class="subsection">
+            <h3>B. Price Elasticity & Spend Willingness</h3>
+            <ul>
+              <li>D.C. restaurants price point context: El Cielo is at the high end of the 1 star and near 2-star pricing (>$289)</li>
+                <li><span class="highlight">Price Elasticity:</span> D.C. diners are price-sensitive. Economic factors can impact spending.</li>
+                <li><span class="highlight">Average Check</span>: Expecting $75-100 across dining generally, with tasting menus $300-$500 for two.</li>
+            </ul>
+        </div>
+
+        <div class="subsection">
+          <h3>C. Decision Factors & Influence Platforms</h3>
+            <p>Decision factors and top influential online platforms:</p>
+            <ul>
+                <li><span class="highlight">Key Decision Factors:</span> Concept, quality, chef reputation, peer recommendations, ambiance, service, value.</li>
+                <li><span class="highlight">Top Influential Platforms:</span> Google (Search, Maps, Reviews), OpenTable, Resy, Yelp, Instagram, TripAdvisor.</li>
+                <li><span class="highlight">Other Influential Platforms:</span> Facebook, local media/blogs, Tock</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>3. El Cielo D.C.: Perception & Positioning Analysis</h2>
+        <p>This analyzes El Cielo D.C.'s standing relative to its goals.</p>
+
+        <div class="subsection">
+            <h3>A. Online Review Analysis</h3>
+            <p>Limited access to recent/full reviews, below is a summary:</p>
+            <ul>
+                <li><span class="highlight">Overall Rating:</span> Estimated good, but not top-tier (Yelp: 4.1/5).</li>
+                <li><span class="highlight">Sentiment Themes:</span> Unique, creative, delicious. "Chocotherapy" and "Tree of Life" bread are praised.</li>
+                <li><span class="highlight">Negative/Mixed Sentiment:</span> Pacing/length, price relative to value, concept might seem gimmicky, and location is mixed.</li>
+            </ul>
+        </div>
+
+        <div class="subsection">
+            <h3>B. Social Media Analytics (Proxy)</h3>
+              <p>Analysis Based on General Observations:</p>
+            <ul>
+                <li><span class="highlight">Engagement Rate:</span> Cannot be quantified, but likely with positive visual presentation.</li>
+                <li><span class="highlight">Share of Voice:</span> Likely lower than competitors with established brand power.</li>
+                <li><span class="highlight">Influencer Mentions:</span> Has benefitted from Michelin status and unique concept, which brings in bloggers.</li>
+            </ul>
+        </div>
+
+        <div class="subsection">
+            <h3>C. Perception Gap Analysis</h3>
+            <ul>
+                <li><span class="highlight">Intended vs. Actual:</span> Aims for top-tier, unique, experiential, Colombian fine dining.</li>
+                <li><span class="highlight">Key Strengths:</span> Unique, experiential.</li>
+                <li><span class="highlight">Key Weaknesses:</span> Value, culinary impact.</li>
+                <li><span class="highlight">Concept Clarity:</span> The concept is generally understood, but some potential diners still question it and there is a need for stronger connection with its target customer.</li>
+                <li><span class="highlight">Market Position:</span> Likely seen as just below the top tier.</li>
+                <li><span class="highlight">Location Perception:</span> Union Market is a destination, but may not appeal to all demographics.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>4. Possible Factors Contributing to Low Occupancy</h2>
+        <p>Several factors contribute to lower-than-expected occupancy.</p>
+        <ul>
+            <li><span class="highlight">Limited Awareness & Visibility:</span> Lower visibility than some competitors.</li>
+            <li><span class="highlight">Brand Positioning & Message Misalignment:</span> Narrative not fully understood.</li>
+            <li><span class="highlight">Price and Value Mismatch:</span> High price creates value questions.</li>
+            <li><span class="highlight">Concept Resonance & Cultural Fit:</span> Concept might not fully resonate.</li>
+            <li><span class="highlight">Strong Competition:</span> Many competing venues.</li>
+            <li><span class="highlight">Operational or Service Weaknesses:</span> Service hiccups or long service times.</li>
+            <li><span class="highlight">External Economic Factors:</span> D.C. location and seasonality.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>5. Strategic Recommendations & KPI Targets</h2>
+        <p>Proposed initiatives to boost occupancy, including KPIs and targets:</p>
+
+        <div class="recommendation">
+            <h3>1. Enhance Booking Accessibility and Visibility</h3>
+            <p>List on OpenTable/Resy, streamline booking process.</p>
+             <div class="kpi-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>KPI</th>
+                    <th>Baseline</th>
+                    <th>Target</th>
+                    <th>Timeframe</th>
+                    <th>Complexity</th>
+                    <th>ROI</th>
+                    <th>Resources</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Reservations via OpenTable/Resy</td>
+                    <td>0%</td>
+                    <td>20-30% within 3 months</td>
+                    <td>3 months</td>
+                    <td>Low-Medium</td>
+                    <td>High</td>
+                    <td>Platform coordination</td>
+                  </tr>
+                  <tr>
+                    <td>Booking Conversion Rate</td>
+                    <td>70% (estimate)</td>
+                    <td>>90%</td>
+                    <td>Ongoing</td>
+                    <td>Low</td>
+                    <td>High</td>
+                    <td>Web updates.</td>
+                  </tr>
+                  <tr>
+                      <td>No-Show Rate</td>
+                      <td>Unknown</td>
+                      <td>Maintain <5%</td>
+                      <td>Ongoing</td>
+                      <td>Low</td>
+                      <td>High</td>
+                      <td>Customer management</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+
+        <div class="recommendation">
+            <h3>2. Introduce a Tiered Dining Option to Improve Value Perception</h3>
+            <p>Offer shorter/more flexible menus on select nights</p>
+            <div class="kpi-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>KPI</th>
+                    <th>Baseline</th>
+                    <th>Target</th>
+                    <th>Timeframe</th>
+                    <th>Complexity</th>
+                    <th>ROI</th>
+                    <th>Resources</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Midweek Occupancy</td>
+                    <td>50-60%</td>
+                    <td>&gt;80%</td>
+                    <td>2 months</td>
+                    <td>Medium</td>
+                    <td>Potentially High</td>
+                    <td>Chef, Marketing</td>
+                  </tr>
+                  <tr>
+                    <td>Incrementality of New Menu</td>
+                    <td>N/A</td>
+                    <td>Increase total covers, not cannibalize existing covers</td>
+                    <td>2 months</td>
+                    <td>Medium</td>
+                    <td>Potentially High</td>
+                    <td>Menu changes</td>
+                  </tr>
+                  <tr>
+                      <td>Repeat diners</td>
+                      <td>Unknown</td>
+                      <td>Track by month</td>
+                      <td>Ongoing</td>
+                      <td>Medium</td>
+                      <td>Potentially High</td>
+                      <td>Menu promotion</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+        </div>
+
+        <div class="recommendation">
+            <h3>3. Aggressively Market Social & Local Promotions</h3>
+            <p>Implement targeted seasonal campaigns and partner with concierges.</p>
+            <div class="kpi-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>KPI</th>
+                    <th>Baseline</th>
+                    <th>Target</th>
+                    <th>Timeframe</th>
+                    <th>Complexity</th>
+                    <th>ROI</th>
+                    <th>Resources</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Off-Peak Occupancy</td>
+                    <td>60% (Summer)</td>
+                    <td>Increase by 20%</td>
+                    <td>Ongoing</td>
+                    <td>Low-Medium</td>
+                    <td>Medium-High</td>
+                    <td>Marketing team</td>
+                  </tr>
+                  <tr>
+                    <td>Concierge/Tour Referrals</td>
+                    <td>4/month</td>
+                    <td>Increase by 50%</td>
+                    <td>Ongoing</td>
+                    <td>Low-Medium</td>
+                    <td>Medium-High</td>
+                    <td>Marketing, Partnerships</td>
+                  </tr>
+                  <tr>
+                      <td>Social Media Engagement</td>
+                      <td>Base Engagement</td>
+                      <td>Increase by 25%</td>
+                      <td>Ongoing</td>
+                      <td>Low-Medium</td>
+                      <td>Medium-High</td>
+                      <td>Marketing, Partnerships</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+
+        <div class="recommendation">
+            <h3>4. Refine the Dining Experience (Pacing & Portions)</h3>
+            <p>Address service pacing and consistency issues.</p>
+            <div class="kpi-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>KPI</th>
+                    <th>Baseline</th>
+                    <th>Target</th>
+                    <th>Timeframe</th>
+                    <th>Complexity</th>
+                    <th>ROI</th>
+                    <th>Resources</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Dinner Duration</td>
+                    <td>3.5 hours</td>
+                    <td>Reduce by 20% to 3:00</td>
+                    <td>1 Month</td>
+                    <td>Medium</td>
+                    <td>Medium</td>
+                    <td>Chef, runners, process changes.</td>
+                  </tr>
+                  <tr>
+                    <td>Negative Review Mentions</td>
+                    <td>1 in 5 reviews</td>
+                    <td>Eliminate</td>
+                    <td>3 months</td>
+                    <td>Medium</td>
+                    <td>Medium</td>
+                    <td>Review management</td>
+                  </tr>
+                  <tr>
+                      <td>Overall Yelp/TA Rating</td>
+                      <td>4.1/3.7</td>
+                      <td>Achieve 4.3/4.0</td>
+                      <td>6 months</td>
+                      <td>Medium</td>
+                      <td>Medium</td>
+                      <td>Consistent service.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+        </div>
+
+        <div class="recommendation">
+            <h3>5. Strengthen Loyalty and Personal Outreach</h3>
+            <p>Implement a VIP program, with past guest and referral programs</p>
+            <div class="kpi-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>KPI</th>
+                    <th>Baseline</th>
+                    <th>Target</th>
+                    <th>Timeframe</th>
+                    <th>Complexity</th>
+                    <th>ROI</th>
+                    <th>Resources</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Repeat Visit Rate</td>
+                    <td>&lt;10%</td>
+                    <td>Increase to 20%</td>
+                    <td>1 year</td>
+                    <td>Low</td>
+                    <td>Medium</td>
+                    <td>CRM, marketing</td>
+                  </tr>
+                  <tr>
+                    <td>Email Subscribers</td>
+                    <td>0</td>
+                    <td>Create list with 500 engaged past guests</td>
+                    <td>6 months</td>
+                    <td>Low</td>
+                    <td>Medium</td>
+                    <td>Marketing</td>
+                  </tr>
+                  <tr>
+                    <td>Email Engagement</td>
+                    <td>0%</td>
+                    <td>Achieve a 15% open rate and a 5% click-through rate</td>
+                    <td>6 months</td>
+                    <td>Low</td>
+                    <td>Medium</td>
+                    <td>Marketing</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section">
+        <h2>Implementation Roadmap</h2>
+        <p>A phased approach to ensure the efforts are successful and the impact can be measured.</p>
+        <ol>
+            <li>Phase 1 (0-3 Months): Focus on Value Communication and early service refinement.</li>
+            <li>Phase 2 (3-6 Months): Launch Targeted Marketing.</li>
+            <li>Phase 3 (4-9 Months): Optimize booking and long-term brand building.</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>Appendix: Data Sources & Limitations</h2>
+        <ul>
+            <li><strong>Methodology:</strong> Combining the data collected from multiple sources (the internet, reviews, and market research) for the most comprehensive analysis.</li>
+            <li><strong>Limitations:</strong> Public information prevents access to the most detailed data.</li>
+        </ul>
+    </div>
+
+</body>
+</html>

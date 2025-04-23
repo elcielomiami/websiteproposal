@@ -1,0 +1,255 @@
+/* dashboard_style.css */
+
+:root {
+    --background-color: #1a1a1a; /* Dark background */
+    --card-background: #2c2c2c;   /* Slightly lighter card background */
+    --text-color: #e0e0e0;       /* Light text */
+    --primary-accent: #d4af37;   /* Gold accent (Elcielo-like) */
+    --secondary-accent: #4a90e2; /* Optional accent (e.g., deep blue) */
+    --green: #4CAF50;
+    --light-green: #8BC34A;
+    --yellow: #FFC107;
+    --red: #F44336;
+    --border-color: #444;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 14px;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    color: var(--primary-accent);
+    font-size: 1.8em;
+    font-weight: 300; /* Lighter weight for sophistication */
+}
+
+.date-range {
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+.kpi-header {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.kpi-card {
+    background-color: var(--card-background);
+    padding: 15px 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-left: 4px solid var(--primary-accent); /* Accent border */
+}
+
+.kpi-label {
+    font-size: 0.85em;
+    color: #ccc;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.kpi-value {
+    font-size: 1.6em;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.kpi-value .fas {
+    font-size: 0.6em; /* Smaller icon */
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.trend-up {
+    color: var(--green);
+}
+
+.trend-down {
+    color: var(--red);
+}
+
+.trend-stable {
+    color: #aaa;
+}
+
+.dashboard-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Main content takes more space */
+    gap: 20px;
+}
+
+.drivers-panel h2,
+.sentiment-panel h3,
+.channels-panel h3,
+.competitors-panel h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--primary-accent);
+    font-weight: 400;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+.driver-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.driver-label {
+    width: 180px; /* Adjust as needed */
+    flex-shrink: 0;
+    padding-right: 15px;
+    font-size: 0.95em;
+}
+
+.progress-bar-container {
+    flex-grow: 1;
+    background-color: #444; /* Darker track */
+    border-radius: 5px;
+    height: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 0.8em;
+    line-height: 20px;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    overflow: visible;
+}
+
+/* Specific driver colors */
+.value-perception { background-color: var(--yellow); }
+.quality-concept { background-color: var(--green); }
+.social-proof { background-color: var(--light-green); }
+.ease-booking { background-color: var(--red); }
+.location-convenience { background-color: var(--green); }
+.chef-reputation { background-color: var(--green); }
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sentiment-feed {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 150px; /* Limit height if needed */
+    overflow-y: auto;
+}
+
+.sentiment-feed li {
+    font-size: 0.9em;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    color: #ccc;
+}
+
+.sentiment-indicator {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.sentiment-indicator.positive { color: var(--green); }
+.sentiment-indicator.negative { color: var(--red); }
+.sentiment-indicator.neutral { color: #aaa; }
+
+.chart-placeholder {
+    text-align: center;
+    color: #aaa;
+    padding: 20px;
+    border: 1px dashed var(--border-color);
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.chart-placeholder small {
+    display: block;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.competitor-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.competitor-list li {
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+.star-icon {
+    color: var(--primary-accent);
+    margin-left: 5px;
+    font-size: 0.9em;
+}
+
+/* Responsive adjustments (optional example) */
+@media (max-width: 900px) {
+    .dashboard-main {
+        grid-template-columns: 1fr; /* Stack main and sidebar */
+    }
+    .kpi-header {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .kpi-header {
+        grid-template-columns: 1fr 1fr; /* Two columns on small screens */
+    }
+    .driver-item {
+        flex-direction: column; /* Stack label and bar */
+        align-items: flex-start;
+    }
+    .driver-label {
+        width: auto;
+        margin-bottom: 5px;
+    }
+}

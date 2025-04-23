@@ -1,0 +1,236 @@
+/* Basic Reset & Body Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa; /* Light grey background */
+    display: flex;
+}
+
+h1, h2, h3, h4 {
+    color: #003366; /* Deep blue */
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    border-bottom: 2px solid #0056b3; /* Slightly lighter blue border */
+    padding-bottom: 0.3em;
+    margin-top: 1.5em;
+}
+
+h3 {
+    margin-top: 1.2em;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content Area */
+.main-content {
+    padding: 25px 40px;
+}
+
+section {
+    margin-bottom: 2.5em;
+    background-color: #fff; /* White background for sections */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Cover Page */
+#cover-page {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #003366; /* Match sidebar */
+    color: #fff;
+    border-radius: 5px;
+}
+
+#cover-page h1 {
+    color: #fff;
+    font-size: 2.5em;
+    margin-bottom: 0.2em;
+}
+
+#cover-page p {
+    font-size: 1.1em;
+    color: #e9ecef;
+}
+
+/* Tables */
+.table-container {
+    overflow-x: auto; /* Allow horizontal scrolling for large tables */
+    margin-top: 1em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+    font-size: 0.95em;
+}
+
+table th, table td {
+    border: 1px solid #dee2e6; /* Light grey border */
+    padding: 8px 12px;
+    text-align: left;
+}
+
+table th {
+    background-color: #e9ecef; /* Very light grey header */
+    font-weight: bold;
+    color: #495057;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f8f9fa; /* Zebra striping */
+}
+
+.recommendations-table h4 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+/* Charts & Captions */
+.chart-container {
+    width: 100%;
+    max-width: 700px; /* Limit chart width */
+    margin: 1.5em auto; /* Center charts */
+    position: relative; /* Needed for Chart.js responsiveness */
+    height: 350px; /* Default height, adjust as needed */
+}
+
+.chart-container-small {
+    max-width: 500px;
+    height: 300px;
+}
+
+.caption {
+    font-size: 0.9em;
+    color: #6c757d; /* Grey text */
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 1.5em;
+}
+
+/* Citations */
+.citation a {
+    font-size: 0.8em;
+    vertical-align: super;
+    color: #0056b3;
+}
+
+/* Specific Section Styling */
+#elcielo-perception .sentiment-analysis {
+    display: flex;
+    justify-content: space-around;
+    margin: 1.5em 0;
+}
+
+#elcielo-perception .sentiment-category {
+    width: 45%;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#elcielo-perception .positive {
+    background-color: #e6f7ff; /* Light blue */
+    border-left: 5px solid #1890ff; /* Blue accent */
+}
+
+#elcielo-perception .negative {
+    background-color: #fff1f0; /* Light red */
+    border-left: 5px solid #f5222d; /* Red accent */
+}
+
+#elcielo-perception .sentiment-category h4 {
+    margin-top: 0;
+    color: #333;
+}
+
+#elcielo-perception ul {
+    padding-left: 20px;
+}
+
+#elcielo-perception .gap-analysis {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.5em 0;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#elcielo-perception .gap-analysis div {
+    width: 40%;
+}
+
+#elcielo-perception .gap-analysis .gap-arrow {
+    width: 15%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #0056b3;
+}
+
+.dashboard-mockup {
+    text-align: center;
+    margin: 2em 0;
+}
+
+.dashboard-mockup img {
+    margin-top: 1em;
+}
+
+#references ol {
+    padding-left: 20px;
+}
+
+#references li {
+    margin-bottom: 0.5em;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    #elcielo-perception .sentiment-analysis {
+        flex-direction: column;
+    }
+
+    #elcielo-perception .sentiment-category {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+    #elcielo-perception .gap-analysis {
+        flex-direction: column;
+    }
+
+     #elcielo-perception .gap-analysis div {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+    #elcielo-perception .gap-analysis .gap-arrow {
+        width: 100%;
+        margin-bottom: 1em;
+        transform: rotate(90deg);
+    }
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elcielo D.C. Performance Dashboard (Mockup)</title>
+    <link rel="stylesheet" href="dashboard_style.css">
+    <!-- Consider adding an icon font library like Font Awesome for arrows -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Elcielo D.C. Performance Dashboard</h1>
+            <div class="date-range">Last 7 Days</div>
+        </header>
+
+        <section class="kpi-header">
+            <div class="kpi-card">
+                <span class="kpi-label">Overall Occupancy (7d)</span>
+                <span class="kpi-value">75% <i class="fas fa-arrow-up trend-up"></i></span>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-label">Weekend Occupancy (Last)</span>
+                <span class="kpi-value">88% <i class="fas fa-arrow-up trend-up"></i></span>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-label">Midweek Occupancy (M-W)</span>
+                <span class="kpi-value">62% <i class="fas fa-arrow-down trend-down"></i></span>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-label">Average Check</span>
+                <span class="kpi-value">$265 <i class="fas fa-minus trend-stable"></i></span>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-label">Booking Conversion</span>
+                <span class="kpi-value">55% <i class="fas fa-arrow-down trend-down"></i></span>
+            </div>
+        </section>
+
+        <main class="dashboard-main">
+            <section class="drivers-panel card">
+                <h2>Occupancy Driver Health</h2>
+                <div class="driver-item">
+                    <span class="driver-label">Value Perception</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar value-perception" style="width: 55%;">55%</div>
+                    </div>
+                </div>
+                <div class="driver-item">
+                    <span class="driver-label">Quality / Concept</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar quality-concept" style="width: 80%;">80%</div>
+                    </div>
+                </div>
+                <div class="driver-item">
+                    <span class="driver-label">Social Proof / Hype</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar social-proof" style="width: 70%;">70%</div>
+                    </div>
+                </div>
+                <div class="driver-item">
+                    <span class="driver-label">Ease of Booking</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar ease-booking" style="width: 40%;">40%</div>
+                    </div>
+                </div>
+                <div class="driver-item">
+                    <span class="driver-label">Location / Convenience</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar location-convenience" style="width: 75%;">75%</div>
+                    </div>
+                </div>
+                 <div class="driver-item">
+                    <span class="driver-label">Chef Reputation</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar chef-reputation" style="width: 85%;">85%</div>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="sidebar">
+                <section class="sentiment-panel card">
+                    <h3>Recent Sentiment</h3>
+                    <ul class="sentiment-feed">
+                        <li><span class="sentiment-indicator positive">[+]</span> Amazing experience, the chocolate therapy was unique!</li>
+                        <li><span class="sentiment-indicator negative">[-]</span> Food was good, but service felt slow and rushed at times.</li>
+                        <li><span class="sentiment-indicator neutral">[+/-]</span> Very expensive, not sure if the value was there compared to others.</li>
+                    </ul>
+                </section>
+
+                <section class="channels-panel card">
+                    <h3>Booking Channels</h3>
+                    <!-- Placeholder for Donut Chart -->
+                    <div class="chart-placeholder donut-chart">
+                        <p>Direct Website: 60%</p>
+                        <p>SevenRooms Link: 30%</p>
+                        <p>Phone: 10%</p>
+                        <small>(Donut Chart Visualization)</small>
+                    </div>
+                </section>
+
+                <section class="competitors-panel card">
+                    <h3>Competitor Snapshot (Yelp)</h3>
+                    <ul class="competitor-list">
+                        <li>Minibar: 4.5 <i class="fas fa-star star-icon"></i></li>
+                        <li>The Dabney: 4.4 <i class="fas fa-star star-icon"></i></li>
+                        <li>Jônt: 4.6 <i class="fas fa-star star-icon"></i></li>
+                    </ul>
+                </section>
+            </aside>
+        </main>
+
+    </div> <!-- end dashboard-container -->
+</body>
+</html>
