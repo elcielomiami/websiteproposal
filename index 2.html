@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elcielo D.C. Market & Occupancy Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Frappe Gantt CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/frappe-gantt/0.6.1/frappe-gantt.min.css">
+    <!-- Consider adding chartjs-adapter-date-fns if needed for time-series axes -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script> -->
+    <!-- Add plugins like wordcloud or gantt chart if implementing those -->
+</head>
+<body>
+
+    <div class="main-content">
+        <section id="cover" class="cover-page">
+            <h1>Washington D.C. Fine Dining Market Analysis</h1>
+            <h2>Elcielo D.C. Occupancy Optimization</h2>
+            <p>Date: April 23, 2025</p> <!-- Placeholder Date -->
+            <p>Prepared by: Dario Rico</p>
+        </section>
+
+        <section id="exec-summary">
+            <h2>Executive Summary</h2>
+            <p>Washington D.C.’s fine dining scene has rapidly expanded, featuring ~25 Michelin-starred restaurants by 2024<sup class="citation"><a href="#ref-1">[1]</a></sup>. Top-tier venues often operate near full capacity, especially on peak nights. In contrast, Elcielo D.C., a one-star modern Colombian tasting menu restaurant (~$250+ for ~22 courses<sup class="citation"><a href="#ref-14">[14]</a></sup>), faces lower-than-expected seat occupancy, particularly midweek.</p>
+            <div class="key-metrics">
+                <div class="metric-item">
+                    <span class="metric-value">3.7 / 5</span>
+                    <span class="metric-label">TripAdvisor Rating<sup class="citation"><a href="#ref-6">[6]</a></sup></span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-value">4.1 / 5</span>
+                    <span class="metric-label">Yelp Rating<sup class="citation"><a href="#ref-31">[31]</a></sup></span>
+                </div>
+                 <div class="metric-item">
+                    <span class="metric-value"><70%</span>
+                    <span class="metric-label">Est. Midweek Occupancy</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-value">~33k</span>
+                    <span class="metric-label">Instagram Followers<sup class="citation"><a href="#ref-30">[30]</a></sup></span>
+                </div>
+                 <div class="metric-item">
+                    <span class="metric-value">1★</span>
+                    <span class="metric-label">Michelin Star</span>
+                </div>
+            </div>
+            <p><strong>Key Findings:</strong></p>
+            <ul>
+                <li>D.C. competitors generally boast high occupancy (80-100% weekends) and positive sentiment (Yelp 4.3–4.5)<sup class="citation"><a href="#ref-2">[2]</a>,<a href="#ref-3">[3]</a></sup>, aided by easier booking (OpenTable/Resy) and strong local followings.</li>
+                <li>D.C. diners prefer weekends<sup class="citation"><a href="#ref-33">[33]</a></sup>, smaller parties (2-4)<sup class="citation"><a href="#ref-35">[35]</a></sup>, are relatively price-sensitive compared to NYC<sup class="citation"><a href="#ref-41">[41]</a></sup>, and value booking convenience<sup class="citation"><a href="#ref-39">[39]</a>,<a href="#ref-40">[40]</a></sup>.</li>
+                <li>Elcielo faces a perception-value gap, with mixed reviews citing execution, pacing, and value relative to its price point<sup class="citation"><a href="#ref-6">[6]</a>,<a href="#ref-7">[7]</a>,<a href="#ref-21">[21]</a></sup>.</li>
+                <li>The booking process via SevenRooms, involving manual payment in COP, creates friction<sup class="citation"><a href="#ref-39">[39]</a></sup>.</li>
+            </ul>
+            <p><strong>Recommendations:</strong></p>
+            <ul>
+                <li>Enhance visibility and booking ease (e.g., list on OpenTable/Resy).</li>
+                <li>Refine value proposition (e.g., consider shorter/lower-priced midweek options).</li>
+                <li>Optimize guest experience based on feedback (pacing, consistency).</li>
+                <li>Leverage targeted digital marketing and influencer collaborations.</li>
+                <li>Implement data-driven management using an 'Occupancy Driver Model' and track KPIs.</li>
+            </ul>
+            <p><strong>Target Outcome:</strong> Increase occupancy to 90%+ on weekends and 70%+ midweek, aligning market perception with Michelin status.</p>
+        </section>
+
+        <section id="comp-landscape">
+            <h2>Competitive Landscape Analysis</h2>
+            <p>D.C.'s market features multiple high-performing Michelin-starred and experiential restaurants.</p>
+
+            <h3>Competitor Performance Snapshot</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Restaurant</th>
+                            <th>Michelin Stars</th>
+                            <th>Est. Avg. Rating (Yelp)</th>
+                            <th>Est. Price Point (Tasting)</th>
+                            <th>Est. Weekend Occupancy</th>
+                            <th>Booking Platform(s)</th>
+                            <th>Social Media (IG Followers)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Minibar</td>
+                            <td>2★<sup class="citation"><a href="#ref-8">[8]</a></sup></td>
+                            <td>4.5★<sup class="citation"><a href="#ref-11">[11]</a></sup></td>
+                            <td>~$335+<sup class="citation"><a href="#ref-9">[9]</a></sup></td>
+                            <td>~100%<sup class="citation"><a href="#ref-8">[8]</a></sup></td>
+                            <td>Tock/Proprietary<sup class="citation"><a href="#ref-10">[10]</a></sup></td>
+                            <td>Part of José Andrés empire</td>
+                        </tr>
+                         <tr>
+                            <td>Jônt</td>
+                            <td>2★<sup class="citation"><a href="#ref-12">[12]</a></sup></td>
+                            <td>4.5★<sup class="citation"><a href="#ref-13">[13]</a></sup></td>
+                            <td>~$300+ (Est.)</td>
+                            <td>~100%<sup class="citation"><a href="#ref-12">[12]</a></sup></td>
+                            <td>Tock/Proprietary (Est.)</td>
+                            <td>~29k (with Bresca)<sup class="citation"><a href="#ref-12">[12]</a></sup></td>
+                        </tr>
+                        <tr>
+                            <td>The Dabney</td>
+                            <td>1★<sup class="citation"><a href="#ref-15">[15]</a></sup></td>
+                            <td>4.3★<sup class="citation"><a href="#ref-18">[18]</a></sup></td>
+                            <td>~$125 / À la carte<sup class="citation"><a href="#ref-17">[17]</a></sup></td>
+                            <td>Very High<sup class="citation"><a href="#ref-15">[15]</a></sup></td>
+                            <td>OpenTable<sup class="citation"><a href="#ref-15">[15]</a></sup></td>
+                            <td>~46k<sup class="citation"><a href="#ref-16">[16]</a></sup></td>
+                        </tr>
+                         <tr>
+                            <td>Rose's Luxury</td>
+                            <td>Bib Gourmand<sup class="citation"><a href="#ref-19">[19]</a></sup></td>
+                            <td>4.5★<sup class="citation"><a href="#ref-20">[20]</a></sup></td>
+                            <td>À la carte ($$-$$$)</td>
+                            <td>~100% (Walk-in)<sup class="citation"><a href="#ref-19">[19]</a></sup></td>
+                            <td>Mostly Walk-in<sup class="citation"><a href="#ref-19">[19]</a></sup></td>
+                            <td>~49k<sup class="citation"><a href="#ref-30">[30]</a></sup> (Est.)</td> <!-- Estimated based on Dabney/Elcielo -->
+                        </tr>
+                        <tr>
+                            <td>Imperfecto</td>
+                            <td>1★<sup class="citation"><a href="#ref-21">[21]</a></sup></td>
+                            <td>3.8★<sup class="citation"><a href="#ref-21">[21]</a></sup></td>
+                            <td>~$200<sup class="citation"><a href="#ref-22">[22]</a></sup></td>
+                            <td>Mixed/Moderate<sup class="citation"><a href="#ref-21">[21]</a></sup></td>
+                            <td>Resy/SevenRooms<sup class="citation"><a href="#ref-21">[21]</a></sup></td>
+                            <td>~21k<sup class="citation"><a href="#ref-22">[22]</a></sup></td>
+                        </tr>
+                        <tr>
+                            <td>Cranes</td>
+                            <td>1★<sup class="citation"><a href="#ref-23">[23]</a></sup></td>
+                            <td>4.3★<sup class="citation"><a href="#ref-24">[24]</a></sup></td>
+                            <td>~$150 / Bar Menu<sup class="citation"><a href="#ref-25">[25]</a></sup></td>
+                            <td>Strong<sup class="citation"><a href="#ref-23">[23]</a></sup></td>
+                            <td>OpenTable<sup class="citation"><a href="#ref-23">[23]</a></sup></td>
+                            <td>N/A (Lower profile)</td>
+                        </tr>
+                        <tr>
+                            <td>Bresca</td>
+                            <td>1★<sup class="citation"><a href="#ref-26">[26]</a></sup></td>
+                            <td>4.2★<sup class="citation"><a href="#ref-27">[27]</a></sup></td>
+                            <td>~$125 / À la carte<sup class="citation"><a href="#ref-28">[28]</a></sup></td>
+                            <td>High<sup class="citation"><a href="#ref-26">[26]</a></sup></td>
+                            <td>OpenTable<sup class="citation"><a href="#ref-26">[26]</a></sup></td>
+                            <td>~10k (Part of ~29k)<sup class="citation"><a href="#ref-28">[28]</a></sup></td>
+                        </tr>
+                         <tr>
+                            <td>Pineapple & Pearls</td>
+                            <td>1★<sup class="citation"><a href="#ref-29">[29]</a></sup></td>
+                            <td>~4.4★ (Est.)<sup class="citation"><a href="#ref-29">[29]</a></sup></td>
+                            <td>~$250 (Prepaid)<sup class="citation"><a href="#ref-29">[29]</a></sup></td>
+                            <td>High (Weekends)<sup class="citation"><a href="#ref-29">[29]</a></sup></td>
+                            <td>Tock<sup class="citation"><a href="#ref-29">[29]</a></sup></td>
+                            <td>Moderate</td>
+                        </tr>
+                        <tr class="elcielo-row">
+                            <td>Elcielo D.C.</td>
+                            <td>1★</td>
+                            <td>4.1★<sup class="citation"><a href="#ref-31">[31]</a></sup></td>
+                            <td>~$250+<sup class="citation"><a href="#ref-14">[14]</a></sup></td>
+                            <td>Lower than peers (Est.)</td>
+                            <td>SevenRooms<sup class="citation"><a href="#ref-39">[39]</a></sup></td>
+                            <td>~33k<sup class="citation"><a href="#ref-30">[30]</a></sup></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="caption">Table 1: Comparison of key D.C. fine dining competitors. Elcielo shows strong social media presence but lags slightly in ratings and utilizes a less common booking platform. Occupancy estimates are based on qualitative descriptions in source text.</p>
+
+            <h3>Market Positioning: Price vs. Rating</h3>
+            <div class="chart-container">
+                <canvas id="positioningMap"></canvas>
+            </div>
+            <p class="caption">Chart 1: Positioning map of D.C. fine dining competitors based on estimated price point (tasting menu or equivalent) and average Yelp rating. Elcielo is positioned at a high price point but with a slightly lower rating compared to several direct competitors. Price points are estimates based on available data.</p>
+
+            <h3>Competitive Profile Comparison</h3>
+             <div class="chart-container">
+                <canvas id="radarChart"></canvas>
+            </div>
+            <p class="caption">Chart 2: Radar chart comparing Elcielo against key competitors (Minibar, The Dabney, Imperfecto) across critical dimensions. Scores (1-5 scale) are estimated based on analysis of reviews, booking ease, concept uniqueness, and social buzz. Elcielo scores well on uniqueness but shows potential gaps in satisfaction/value and booking accessibility.</p>
+        </section>
+
+        <section id="diner-behavior">
+            <h2>D.C. Diner Behavior Analysis</h2>
+            <p>Understanding local diner preferences is key to optimizing occupancy.</p>
+
+            <h3>Dining Day Preferences</h3>
+            <div class="chart-container">
+                <canvas id="weekdayWeekendChart"></canvas>
+            </div>
+            <p class="caption">Chart 3: D.C. fine dining shows a strong preference for weekend (Thu-Sat) bookings compared to slower weekdays (Mon-Wed)<sup class="citation"><a href="#ref-33">[33]</a></sup>. Chart represents relative demand based on analysis.</p>
+
+            <h3>Key Decision-Making Factors</h3>
+             <div class="chart-container chart-container-small">
+                <canvas id="decisionFactorsChart"></canvas>
+            </div>
+            <p class="caption">Chart 4: Ranked factors influencing D.C. fine dining choices<sup class="citation"><a href="#ref-43">[43]</a></sup>. Cuisine/Quality and Value Perception are paramount, followed by Social Proof (Michelin, hype).</p>
+
+            <h3>Dining Seasonality</h3>
+            <div class="chart-container">
+                <canvas id="seasonalityChart"></canvas>
+            </div>
+            <p class="caption">Chart 5: Estimated D.C. fine dining seasonality based on tourism peaks<sup class="citation"><a href="#ref-36">[36]</a></sup>. Spring (Apr-Jun) and Fall (Sep-Oct) typically see higher demand, while Summer and Winter experience dips.</p>
+
+            <h3>Booking & Party Size Patterns</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Typical D.C. Fine Dining Behavior</th>
+                            <th>Implication for Elcielo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Booking Lead Time (Weekend)</td>
+                            <td>1-4 weeks (Avg. ~14-21 days for top spots)<sup class="citation"><a href="#ref-38">[38]</a></sup></td>
+                            <td>May have shorter lead times; opportunity to capture last-minute bookings if friction is reduced.</td>
+                        </tr>
+                        <tr>
+                            <td>Common Party Size</td>
+                            <td>2-4 people (Larger groups declining)<sup class="citation"><a href="#ref-35">[35]</a></sup></td>
+                            <td>Focus marketing on couples/small groups (date nights, celebrations).</td>
+                        </tr>
+                        <tr>
+                            <td>Booking Platform Preference</td>
+                            <td>High preference for OpenTable/Resy for convenience<sup class="citation"><a href="#ref-40">[40]</a></sup></td>
+                            <td>SevenRooms usage + manual payment<sup class="citation"><a href="#ref-39">[39]</a></sup> poses a barrier; exploring major platforms is recommended.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+             <p class="caption">Table 2: Key booking and party size behaviors in the D.C. fine dining market.</p>
+
+            <h3>Price Sensitivity by Occasion (Conceptual)</h3>
+             <div class="chart-container">
+                 <canvas id="priceSensitivityHeatmap"></canvas>
+            </div>
+             <p class="caption">Chart 6: Conceptual heatmap illustrating D.C. diner price sensitivity. Sensitivity is likely lower for major special occasions (anniversaries, milestones) booked on weekends, and higher for regular weekday dinners or less significant events. Elcielo's high price point positions it primarily for lower-sensitivity occasions.</p>
+        </section>
+
+        <section id="elcielo-perception">
+            <h2>Elcielo Perception Analysis</h2>
+            <p>Guest reviews and ratings reveal mixed perceptions of the Elcielo experience.</p>
+
+            <h3>Review Sentiment Overview (Qualitative)</h3>
+            <div class="sentiment-analysis">
+                <div class="sentiment-category positive">
+                    <h4>Positive Themes</h4>
+                    <ul>
+                        <li>Unique concept ("chocotherapy"<sup class="citation"><a href="#ref-5">[5]</a></sup>, immersive)</li>
+                        <li>Beautiful space</li>
+                        <li>Some standout dishes</li>
+                        <li>Michelin star recognition</li>
+                        <li>Strong Instagram presence</li>
+                    </ul>
+                </div>
+                <div class="sentiment-category negative">
+                    <h4>Negative Themes</h4>
+                    <ul>
+                        <li>Value for price ("underwhelming"<sup class="citation"><a href="#ref-7">[7]</a></sup>, "not sure if worth $300"<sup class="citation"><a href="#ref-42">[42]</a></sup>)</li>
+                        <li>Inconsistent execution/pacing<sup class="citation"><a href="#ref-6">[6]</a></sup></li>
+                        <li>Booking friction<sup class="citation"><a href="#ref-39">[39]</a></sup></li>
+                        <li>Comparisons to other top-tier experiences</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="caption">Figure 1: Summary of common positive and negative themes identified in Elcielo D.C. reviews across various platforms.</p>
+
+            <h3>Platform Rating Comparison</h3>
+            <div class="chart-container">
+                <canvas id="ratingsComparisonChart"></canvas>
+            </div>
+            <p class="caption">Chart 7: Elcielo D.C.'s average ratings on major platforms compared to the typical range for its top competitors (based on data in Table 1). Elcielo's ratings (TripAdvisor 3.7<sup class="citation"><a href="#ref-6">[6]</a></sup>, Yelp 4.1<sup class="citation"><a href="#ref-31">[31]</a></sup>) are slightly below the 4.3-4.5 range common among high-demand peers.</p>
+
+            <h3>Perception Gap Analysis</h3>
+            <div class="gap-analysis">
+                <div>
+                    <h4>Intended Positioning</h4>
+                    <p>Unique, whimsical, multi-sensory Colombian fine dining journey; a memorable, high-end experience worthy of its Michelin star.</p>
+                </div>
+                <div class="gap-arrow">→ GAP ←</div>
+                <div>
+                    <h4>Actual Market Perception (Based on Reviews)</h4>
+                    <p>Interesting and unique concept, but sometimes inconsistent execution, potentially slow pacing, and questionable value-for-money compared to other D.C. options at a similar price point.</p>
+                </div>
+            </div>
+             <p class="caption">Figure 2: Gap between Elcielo's intended brand positioning and its perceived reality based on diner feedback.</p>
+
+            <h3>Common Review Keywords</h3>
+             <div class="chart-container chart-container-small">
+                <div id="wordCloud"></div>
+            </div>
+             <p class="caption">Chart 8: Word cloud generated from keywords frequently appearing in Elcielo D.C. reviews (positive and negative). Highlights include "experience," "tasting," "chocolate," "unique," but also "price," "slow," "value," and "service."</p>
+        </section>
+
+        <section id="occupancy-factors">
+            <h2>Occupancy Factor Analysis</h2>
+            <p>Several interconnected factors influence Elcielo's seat occupancy.</p>
+
+            <h3>Weighted Occupancy Driver Model (Conceptual)</h3>
+             <div class="chart-container">
+                 <canvas id="occupancyFactorModel"></canvas> <!-- Placeholder for a more complex visualization if possible, otherwise bar chart -->
+            </div>
+             <p class="caption">Chart 9: Conceptual model showing key drivers impacting occupancy. Factors like Value Perception, Booking Ease, and Competitive Pressure likely have significant weight. Weights are illustrative.</p>
+
+            <h3>Factor Correlation Matrix (Conceptual)</h3>
+            <div class="chart-container">
+                <canvas id="correlationMatrix"></canvas>
+            </div>
+            <p class="caption">Chart 10: Conceptual correlation matrix showing potential relationships between factors (e.g., higher Price Sensitivity might correlate negatively with Midweek Occupancy). This visualization requires deeper data analysis for precise correlations.</p>
+
+            <h3>Occupancy Fluctuations</h3>
+             <div class="chart-container">
+                <canvas id="occupancyFluctuationsChart"></canvas>
+            </div>
+            <p class="caption">Chart 11: Estimated occupancy fluctuations for Elcielo, showing dips during weekdays and potentially off-peak seasons (Summer/Winter) compared to higher weekend/peak season rates.</p>
+
+            <h3>Top Issues Affecting Occupancy (Pareto Analysis)</h3>
+             <div class="chart-container">
+                <canvas id="paretoChart"></canvas>
+            </div>
+             <p class="caption">Chart 12: Pareto chart illustrating the primary issues contributing to occupancy challenges, based on review analysis and market comparison. Value perception, booking friction, and strong competition likely account for the majority of the impact.</p>
+        </section>
+
+        <section id="recommendations">
+            <h2>Recommendations with KPIs</h2>
+            <p>Based on the analysis, the following initiatives are recommended to improve Elcielo D.C.'s occupancy and market standing.</p>
+
+            <h3>Recommendation Tables</h3>
+            <div class="table-container recommendations-table">
+                <h4>1. Enhance Visibility & Booking Ease</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Initiative</th>
+                            <th>Baseline Metric</th>
+                            <th>Target Metric</th>
+                            <th>Timeline</th>
+                            <th>Complexity</th>
+                            <th>Expected ROI / Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>List on OpenTable/Resy</td>
+                            <td>0 referrals</td>
+                            <td>15%+ bookings via new channels</td>
+                            <td>4-6 weeks</td>
+                            <td>Medium (Integration, fees)</td>
+                            <td>Increased booking volume, reduced friction</td>
+                        </tr>
+                        <tr>
+                            <td>Simplify Payment Process</td>
+                            <td>Manual COP payment<sup class="citation"><a href="#ref-39">[39]</a></sup></td>
+                            <td>Integrated USD payment</td>
+                            <td>2-4 weeks</td>
+                            <td>Low-Medium (Platform config)</td>
+                            <td>Reduced booking abandonment</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>2. Refine Value Proposition</h4>
+                 <table>
+                    <thead>
+                        <tr>
+                            <th>Initiative</th>
+                            <th>Baseline Metric</th>
+                            <th>Target Metric</th>
+                            <th>Timeline</th>
+                            <th>Complexity</th>
+                            <th>Expected ROI / Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pilot Midweek Shorter/Lower-Priced Menu</td>
+                            <td>~<70% midweek occupancy</td>
+                            <td>Increase midweek occupancy by 15-20%</td>
+                            <td>8-12 weeks (Pilot)</td>
+                            <td>Medium-High (Menu dev, ops)</td>
+                            <td>Attract new segment, boost revenue</td>
+                        </tr>
+                         <tr>
+                            <td>Amplify Colombian Storytelling</td>
+                            <td>Inconsistent mentions in reviews</td>
+                            <td>Increase positive mentions of unique story</td>
+                            <td>Ongoing</td>
+                            <td>Low (Staff training, marketing)</td>
+                            <td>Enhanced differentiation, guest connection</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                 <h4>3. Optimize Guest Experience</h4>
+                 <table>
+                     <thead>
+                        <tr>
+                            <th>Initiative</th>
+                            <th>Baseline Metric</th>
+                            <th>Target Metric</th>
+                            <th>Timeline</th>
+                            <th>Complexity</th>
+                            <th>Expected ROI / Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Address Pacing & Consistency Feedback</td>
+                            <td>Mixed reviews (3.7 TA<sup class="citation"><a href="#ref-6">[6]</a></sup>, 4.1 Yelp<sup class="citation"><a href="#ref-31">[31]</a></sup>)</td>
+                            <td>Improve avg. rating to 4.3+</td>
+                            <td>Ongoing</td>
+                            <td>Medium (Kitchen/Service training)</td>
+                            <td>Higher satisfaction, repeat visits, better reviews</td>
+                        </tr>
+                         <tr>
+                            <td>Enhance Service Storytelling</td>
+                             <td>Variable mentions</td>
+                            <td>Consistent positive feedback on service engagement</td>
+                            <td>4-8 weeks (Training)</td>
+                            <td>Medium (Training)</td>
+                             <td>Improved perceived value, memorable experience</td>
+                        </tr>
+                    </tbody>
+                </table>
+                 <!-- Add tables for other recommendations similarly -->
+            </div>
+
+            <h3>Occupancy Driver Dashboard Mockup</h3>
+            <div class="dashboard-mockup">
+                <h4>Dashboard Concept</h4>
+                <p><i>[Visual Mockup Placeholder - Describe key metrics tracked: Weekly/Monthly Occupancy (Weekday/Weekend), Booking Source %, Conversion Rate (Website Visits to Bookings), Average Rating Trend, Review Sentiment Score, Marketing Campaign ROI, Competitor Pricing Tracker.]</i></p>
+                 <img src="placeholder-dashboard.png" alt="Dashboard Mockup Placeholder" style="max-width: 100%; border: 1px solid #ccc;"> <!-- Placeholder image -->
+            </div>
+            <p class="caption">Figure 3: Conceptual mockup of an Occupancy Driver Dashboard to track key performance indicators.</p>
+
+            <h3>ROI Projection</h3>
+             <div class="chart-container">
+                <canvas id="roiChart"></canvas>
+            </div>
+            <p class="caption">Chart 14: Projected impact of recommendations on occupancy rates and estimated revenue improvement over 12 months, assuming successful implementation.</p>
+
+        </section>
+
+        <section id="references">
+            <h2>References</h2>
+            <ol>
+                <li id="ref-1">The DMV Daily. Michelin-Starred Restaurants Elevate Washington D.C.'s Culinary Scene. <a href="https://thedmvdaily.com/washington-dc-michelin-starred-restaurants/" target="_blank">Link</a></li>
+                <li id="ref-2">Stacker. (Date Accessed). Highest-rated Fine Dining Restaurants in Washington, D.C. by Diners. <a href="https://stacker.com/stories/washington-dc/highest-rated-fine-dining-restaurants-washington-dc-diners" target="_blank">Link</a> (Rating reference for multiple restaurants)</li>
+                <li id="ref-3">Stacker. (Date Accessed). Highest-rated Fine Dining Restaurants in Washington, D.C. by Diners. <a href="https://stacker.com/stories/washington-dc/highest-rated-fine-dining-restaurants-washington-dc-diners" target="_blank">Link</a> (Jônt rating reference)</li>
+                <li id="ref-4">Stacker. (Date Accessed). Highest-rated Fine Dining Restaurants in Washington, D.C. by Diners. <a href="https://stacker.com/stories/washington-dc/highest-rated-fine-dining-restaurants-washington-dc-diners" target="_blank">Link</a> (Rooster & Owl rating reference)</li>
+                <li id="ref-5">Washingtonian. (2020, September 17). Wash Your Hands With Chocolate Before El Cielo’s 25-Dish Modernist Colombian Tasting. <a href="https://www.washingtonian.com/2020/09/17/wash-your-hands-with-chocolate-before-el-cielos-25-dish-tasting/" target="_blank">Link</a></li>
+                <li id="ref-6">Tripadvisor. (Date Accessed). EL CIELO RESTAURANT WASHINGTON DC Reviews. <a href="https://www.tripadvisor.com/Restaurant_Review-g28970-d19908566-Reviews-El_Cielo-Washington_DC_District_of_Columbia.html" target="_blank">Link</a></li>
+                <li id="ref-7">Tripadvisor Review. (Date Accessed). Extremely disappointed. <a href="https://www.tripadvisor.com/ShowUserReviews-g28970-d19908566-r990230774-El_Cielo-Washington_DC_District_of_Columbia.html" target="_blank">Link</a></li>
+                <li id="ref-8">Minibar by José Andrés. (Date Accessed). FAQ Minibar. <a href="https://www.minibarbyjoseandres.com/faq-minibar/" target="_blank">Link</a> (Occupancy/Booking info)</li>
+                <li id="ref-9">Eater DC. (2016, March 8). Dinner for Two at Minibar Can Now Total More Than $1,000. <a href="https://dc.eater.com/2016/3/8/11174292/minibar-now-costs-275-before-beverage-tax-tip" target="_blank">Link</a></li>
+                <li id="ref-10">Minibar by José Andrés. (Date Accessed). FAQ Minibar. <a href="https://www.minibarbyjoseandres.com/faq-minibar/" target="_blank">Link</a> (Booking platform info)</li>
+                <li id="ref-11">Stacker. (Date Accessed). Highest-rated Fine Dining Restaurants in Washington, D.C. by Diners. <a href="https://stacker.com/stories/washington-dc/highest-rated-fine-dining-restaurants-washington-dc-diners" target="_blank">Link</a> (Minibar rating reference)</li>
+                <li id="ref-12">Instagram. (Date Accessed). JÔNT (@jont_dc). <a href="https://www.instagram.com/jont_dc/?hl=en" target="_blank">Link</a> (Followers, concept info)</li>
+                <li id="ref-13">Stacker. (Date Accessed). Highest-rated Fine Dining Restaurants in Washington, D.C. by Diners. <a href="https://stacker.com/stories/washington-dc/highest-rated-fine-dining-restaurants-washington-dc-diners" target="_blank">Link</a> (Jônt rating reference)</li>
+                <li id="ref-14">Derived from text: ~22 courses, ~$250+. Original source likely restaurant website or review mentioning price/course count.</li>
+                <li id="ref-15">OpenTable Blog. (Date Accessed). MICHELIN Star restaurant in DC to book ASAP. <a href="https://www.opentable.com/blog/best-michelin-star-restaurant-washington-dc/" target="_blank">Link</a> (Dabney booking info/popularity)</li>
+                <li id="ref-16">Instagram. (Date Accessed). The Dabney (@thedabneydc). <a href="https://www.instagram.com/thedabneydc/?hl=en" target="_blank">Link</a> (Followers, Award info)</li>
+                <li id="ref-17">The Dabney Website/Menu (Implied). Reference to Prix-fixe ~$125 or à la carte plates.</li>
+                <li id="ref-18">Giftly. (Date Accessed). The Dabney Gift Card. <a href="https://www.giftly.com/gift-card/the-dabney-washington" target="_blank">Link</a> (Yelp rating/review count)</li>
+                <li id="ref-19">The Washington Post. (2015, August 1). Swelter for hours in line to eat at the acclaimed Rose’s Luxury?. <a href="https://www.washingtonpost.com/local/swelter-for-hours-in-a-long-line-to-eat-at-the-acclaimed-roses-luxury-people-do-it-every-day/2015/08/01/b083018e-3165-11e5-8f36-18d1d501920d_story.html" target="_blank">Link</a> (Line culture, demand)</li>
+                <li id="ref-20">Giftly. (Date Accessed). Rose's Luxury Gift Card. <a href="https://www.giftly.com/gift-card/roses-luxury-washington" target="_blank">Link</a> (Yelp rating/review count)</li>
+                <li id="ref-21">Giftly. (Date Accessed). Imperfecto Gift Card. <a href="https://www.giftly.com/gift-card/imperfecto-washington" target="_blank">Link</a> (Yelp rating, booking info inferred) & Seven Reasons Group <a href="https://www.sevenreasonsgroup.com/imperfecto" target="_blank">Link</a> (Review context)</li>
+                <li id="ref-22">Instagram. (Date Accessed). IMPERFECTO (@imperfectodc). <a href="https://www.instagram.com/imperfectodc/?hl=en" target="_blank">Link</a> (Followers) & Price inferred from text.</li>
+                <li id="ref-23">Derived from text: Cranes occupancy, booking via OpenTable.</li>
+                <li id="ref-24">Stacker. (Date Accessed). Highest-rated Fine Dining Restaurants in Washington, D.C. by Diners. <a href="https://stacker.com/stories/washington-dc/highest-rated-fine-dining-restaurants-washington-dc-diners" target="_blank">Link</a> (Cranes rating) & Tripadvisor Review <a href="https://en.tripadvisor.com.hk/ShowUserReviews-g28970-d20076764-r802526483-Cranes_Spanish_Kaiseki-Washington_DC_District_of_Columbia.html" target="_blank">Link</a> (Sentiment)</li>
+                <li id="ref-25">Derived from text: Cranes price point.</li>
+                <li id="ref-26">Derived from text: Bresca occupancy, booking via OpenTable.</li>
+                <li id="ref-27">Giftly. (Date Accessed). Bresca Gift Card. <a href="https://www.giftly.com/gift-card/bresca-washington" target="_blank">Link</a> (Yelp rating)</li>
+                <li id="ref-28">Derived from text: Bresca price/menu, social media followers.</li>
+                <li id="ref-29">The Apres Hours Blog. (Date Accessed). Good Time Guarantee - Pineapple & Pearls. <a href="https://theapreshours.com/pineappleandpearls/" target="_blank">Link</a> (Concept change) & Reddit r/finedining <a href="https://www.reddit.com/r/finedining/comments/18vfob1/choosing_a_dinner_for_a_night_in_dc/" target="_blank">Link</a> (Sentiment) & Michelin Guide <a href="https://guide.michelin.com/us/en/district-of-columbia/washington-dc/restaurant/pineapple-and-pearls" target="_blank">Link</a> (Star regained) & Booking/Price derived from text.</li>
+                <li id="ref-30">Instagram. (Date Accessed). Elcielo D.C. Instagram profile & competitor profiles (@thedabneydc, @rosesluxury).</li>
+                <li id="ref-31">Giftly. (Date Accessed). El Cielo Gift Card. <a href="https://www.giftly.com/gift-card/el-cielo-washington" target="_blank">Link</a> (Yelp rating)</li>
+                <li id="ref-32">Tripadvisor Review. (Date Accessed). Slow - Review of The Dabney. <a href="https://www.tripadvisor.co.nz/ShowUserReviews-g28970-d8825551-r937489501-The_Dabney-Washington_DC_District_of_Columbia.html" target="_blank">Link</a> (Dabney service critique example)</li>
+                <li id="ref-33">The Washington Post. (2024, May 14). The new dining reality: Smaller groups and shorter weeks. <a href="https://www.washingtonpost.com/food/2024/05/14/dining-trends-open-days-large-groups/" target="_blank">Link</a> (Midweek trend)</li>
+                <li id="ref-34">Axios. (2024, August 15). Weekend, not weekday, lunch is on the rise in DC. <a href="https://www.axios.com/local/washington-dc/2024/08/15/lunch-restaurants-weekend-popular-dc" target="_blank">Link</a></li>
+                <li id="ref-35">The Washington Post. (2024, May 14). The new dining reality: Smaller groups and shorter weeks. <a href="https://www.washingtonpost.com/food/2024/05/14/dining-trends-open-days-large-groups/" target="_blank">Link</a> (Party size trend)</li>
+                <li id="ref-36">Destination DC. (Date Accessed). Research. <a href="https://washington.org/research" target="_blank">Link</a> (Tourism seasonality)</li>
+                <li id="ref-37">Giftly/Derived Text. Bresca menu options.</li>
+                <li id="ref-38">Derived from text: General fine dining booking lead times (OpenTable data implied).</li>
+                <li id="ref-39">Reddit r/finedining. (Date Accessed). Reservations at El Cielo. <a href="https://www.reddit.com/r/finedining/comments/1bfu3qd/reservations_at_el_cielo/" target="_blank">Link</a> (Booking friction report)</li>
+                <li id="ref-40">Reddit r/restaurateur. (Date Accessed). Tock vs. Resy vs. OpenTable. <a href="https://www.reddit.com/r/restaurateur/comments/1dntjbb/tock_vs_resy_vs_opentable/" target="_blank">Link</a> (Platform preference discussion)</li>
+                <li id="ref-41">Reddit r/washingtondc. (Date Accessed). DC Restaurant Prices More than NYC. <a href="https://www.reddit.com/r/washingtondc/comments/1cx6jdf/dc_restaurant_prices_more_than_nyc/" target="_blank">Link</a> (Price sensitivity discussion)</li>
+                <li id="ref-42">TikTok @highspeeddining. (Date Accessed). Elcielo Restaurant 22 Course Review. <a href="https://www.tiktok.com/@highspeeddining/video/6984426362060950790?lang=en" target="_blank">Link</a> (Value critique)</li>
+                <li id="ref-43">Derived from analysis: Ranking of decision factors based on synthesis of provided text.</li>
+                <!-- Add more references as needed -->
+            </ol>
+        </section>
+
+    </div> <!-- End main-content -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.7/d3.layout.cloud.min.js"></script>
+    <!-- Frappe Gantt JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/frappe-gantt/0.6.1/frappe-gantt.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
